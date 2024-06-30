@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1719727714128,
+      "tag": "0000_glossy_martin_li",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1719728204703,
+      "tag": "0001_sharp_blizzard",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1719728408359,
+      "tag": "0002_strong_sersi",
+      "breakpoints": true
+    }
+  ]
+}

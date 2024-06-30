@@ -1,13 +1,20 @@
-import type { Config } from 'drizzle-kit';
-
+import { defineConfig } from "drizzle-kit";
 import { env } from "@/config";
 
-export default {
+export default defineConfig({
   schema: "./src/db",
-  out: "./drizzle",
-  driver: 'pg',
   dialect: "postgresql",
   dbCredentials: {
-    connectionString: env.DATABASE_URL!,
+    url: env.DATABASE_URL!,
   },
-} satisfies Config;
+  verbose: true,
+  strict: true,
+  out: "./drizzle",
+  migrations: {
+    table: 'drizzle_migrations',
+    schema: 'public',
+  },
+  tablesFilter: ['pg_stat_*'],
+  extensionsFilters: ["postgis"],
+  schemaFilter: ["public"],
+});
