@@ -16,14 +16,13 @@ export const userService = {
     input: { name: string; email: string; profile: string }
   ) => {
     const result = await db
-      .insert(tbl_users)
-      .values({
-        id: sql`(DEFAULT)`,
-        name: input.name,
-        email: input.email,
-        profile: input.profile,
-      })
-      .returning();
+    .insert(tbl_users)
+    .values({
+      name: input.name,
+      email: input.email,
+      profile: input.profile,
+    })
+    .returning();
 
     return result;
   },

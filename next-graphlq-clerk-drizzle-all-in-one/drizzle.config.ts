@@ -14,7 +14,7 @@ export default defineConfig({
     table: 'drizzle_migrations',
     schema: 'public',
   },
-  tablesFilter: ['pg_stat_*'],
-  extensionsFilters: ["postgis"],
-  schemaFilter: ["public"],
+  tablesFilter: [ 'public', 'tembo'],
+  // extensionsFilters: ["postgis"],
+  // schemaFilter: ["public", "tembo"],
 });
