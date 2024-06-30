@@ -1,7 +1,7 @@
-import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
 export const tbl_users = pgTable("tbl_users", {
-  id: integer("id").notNull().primaryKey().unique(),
+  id: serial("id").notNull().primaryKey().unique(),
   name: text("name").notNull(),
   email: text("email").notNull(),
   profile: text("profile"), // profile image link
