@@ -1,5 +1,6 @@
 export const userTypeDefs = `#graphql
-  scalar Date
+
+scalar Date
 
 type User {
   id: Int!
@@ -22,6 +23,11 @@ input UserInput {
   profile: String!
 }
 
+
+type UserData {
+  user: User
+}
+
 type Query {
   users(offset: Int, limit: Int, search: String): UserList
   user(id: Int!): User
@@ -37,9 +43,5 @@ type DeleteUserResponse {
   success: Boolean!
   message: String!
   data: UserData
-}
-
-type UserData {
-  user: User
 }
 `;

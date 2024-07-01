@@ -83,10 +83,9 @@ export const userService = {
     return result[0];
   },
   deleteUser: async (db: NodePgDatabase, id: number) => {
-    const isUserExist = await db
-      .select()
-      .from(tbl_users)
-      .where(eq(tbl_users.id, id));
+    const isUserExist = await db.query.tbl_users.findFirst({
+      where: eq(tbl_users.id, id),
+    });
 
     if (!isUserExist) {
       return {
@@ -104,7 +103,7 @@ export const userService = {
       success: true,
       message: "User deleted successfully",
       data: {
-        User: user[0],
+        user: user[0],
       },
     };
   },
