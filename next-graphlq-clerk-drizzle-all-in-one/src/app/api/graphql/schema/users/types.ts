@@ -1,39 +1,45 @@
 export const userTypeDefs = `#graphql
   scalar Date
 
-  type User {
-    id: Int!
-    name: String!
-    email: String!
-    profile: String!
-    createdAt: Date!
-    updatedAt: Date!
-  }
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  profile: String!
+  created_at: Date!
+  updated_at: Date!
+}
 
-  input UserInput {
-    name: String!
-    email: String!
-    profile: String!
-  }
+type UserList {
+  userData: [User]
+  totalCount: Int
+  totalPages: Int
+}
 
-  type Query {
-    users(offset: Int, limit: Int): [User]
-    user(id: Int!): User
-  }
+input UserInput {
+  name: String!
+  email: String!
+  profile: String!
+}
 
-  type Mutation {
-    addUser(input: UserInput!): User
-    updateUser(id: Int!, input: UserInput!): User
-    deleteUser(id: Int!): DeleteUserResponse
-  }
+type Query {
+  users(offset: Int, limit: Int, search: String): UserList
+  user(id: Int!): User
+}
 
-  type DeleteUserResponse {
-    success: Boolean!
-    message: String!
-    data: UserData
-  }
+type Mutation {
+  addUser(input: UserInput!): User
+  updateUser(id: Int!, input: UserInput!): User
+  deleteUser(id: Int!): DeleteUserResponse
+}
 
-  type UserData {
-    user: User
-  }
+type DeleteUserResponse {
+  success: Boolean!
+  message: String!
+  data: UserData
+}
+
+type UserData {
+  user: User
+}
 `;

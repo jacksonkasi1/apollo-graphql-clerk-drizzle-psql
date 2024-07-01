@@ -35,12 +35,27 @@ interface DeleteUserArgs {
 export const userResolvers = {
   Date: GraphQLDate,
   Query: {
-    users: (
+    users: async (
       _: unknown,
-      { offset = 0, limit = 10 }: UserArgs,
-      { db }: Context
-    ) => userService.getUsers(db, offset, limit),
-
+      {
+        offset = 0,
+        limit = 10,
+        search = "",
+      }: { offset: number; limit: number; search?: string },
+      { db }: { db: NodePgDatabase }
+    ) => {
+      const { userData, totalCount } = await userService.getUsers(
+        db,
+        offset,
+        limit,
+        search
+      );
+      return {
+        userData,
+        totalCount,
+        totalPages: Math.ceil(totalCount / limit),
+      };
+    },
     user: (_: unknown, { id }: UserByIdArgs, { db }: Context) =>
       userService.getUserById(db, id),
   },

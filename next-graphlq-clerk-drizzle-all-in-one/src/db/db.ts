@@ -6,6 +6,9 @@ import fs from "fs";
 // ** import config
 import { env } from "@/config";
 
+// ** import schema
+import * as schema from "./schema";
+
 const pool = new Pool({
   connectionString: env.DATABASE_URL,
   ssl: {
@@ -14,4 +17,7 @@ const pool = new Pool({
   },
 });
 
-export const db = drizzle(pool);
+export const db = drizzle(pool, {
+  logger: false,
+  schema,
+});

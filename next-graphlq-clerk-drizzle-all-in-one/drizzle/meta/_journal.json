@@ -29,6 +29,34 @@
       "when": 1719730884489,
       "tag": "0003_bright_christian_walker",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1719731984833,
+      "tag": "0004_known_alex_power",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1719732043682,
+      "tag": "0005_absent_madelyne_pryor",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1719732296860,
+      "tag": "0006_lonely_frightful_four",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1719810586701,
+      "tag": "0007_tearful_black_bird",
+      "breakpoints": true
     }
   ]
 }
