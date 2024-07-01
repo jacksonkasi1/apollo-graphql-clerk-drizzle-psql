@@ -8,12 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "drizzle-kit generate",
-		"push": "drizzle-kit push",
+    "push": "drizzle-kit push",
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",
     "@as-integrations/next": "^3.0.0",
+    "@clerk/nextjs": "^5.1.6",
     "@t3-oss/env-nextjs": "^0.10.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.31.2",
