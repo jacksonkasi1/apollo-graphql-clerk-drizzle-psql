@@ -43,6 +43,7 @@ export const userService = {
     return {
       userData,
       totalCount,
+      totalPages: Math.ceil(totalCount / limit),
     };
   },
   getUserById: async (db: NodePgDatabase, id: number) => {

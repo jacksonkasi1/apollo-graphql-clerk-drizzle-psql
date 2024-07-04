@@ -35,7 +35,7 @@ const handler = startServerAndCreateNextHandler<NextRequest, Context>(
       // Ensure the db is included in the context
       return { req, db, auth: userId ? { userId } : null };
     },
-  }
+  },
 );
 
 export { handler as GET, handler as POST };
