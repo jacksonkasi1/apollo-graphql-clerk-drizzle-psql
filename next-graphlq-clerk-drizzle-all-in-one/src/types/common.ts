@@ -4,5 +4,5 @@ import { NodePgDatabase } from "drizzle-orm/node-postgres";
 export interface Context {
   req: NextRequest;
   db: NodePgDatabase;
-  auth: { userId: string } | null;
+  auth: { userId: string };
 }

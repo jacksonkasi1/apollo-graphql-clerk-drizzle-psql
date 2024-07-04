@@ -9,24 +9,26 @@ export const userService = {
     db: NodePgDatabase,
     offset: number,
     limit: number,
-    search?: string
+    search?: string,
   ) => {
     let conditions = [];
+
+    console.log({ offset });
 
     // Apply search filters
     if (search) {
       conditions.push(
         or(
           ilike(tbl_users.name, `%${search}%`),
-          ilike(tbl_users.email, `%${search}%`)
-        )
+          ilike(tbl_users.email, `%${search}%`),
+        ),
       );
     }
 
     const whereCondition =
       conditions.length > 0 ? and(...conditions) : undefined;
 
-      // @ts-ignore
+    // @ts-ignore
     const userData = await db.query.tbl_users.findMany({
       where: whereCondition,
       orderBy: asc(tbl_users.id),
@@ -55,7 +57,7 @@ export const userService = {
   },
   addUser: async (
     db: NodePgDatabase,
-    input: { name: string; email: string; profile: string }
+    input: { name: string; email: string; profile: string },
   ) => {
     const result = await db
       .insert(tbl_users)
@@ -71,7 +73,7 @@ export const userService = {
   updateUser: async (
     db: NodePgDatabase,
     id: number,
-    input: { name: string; email: string; profile: string }
+    input: { name: string; email: string; profile: string },
   ) => {
     const result = await db
       .update(tbl_users)

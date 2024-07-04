@@ -7,11 +7,10 @@ import { GraphQLDate } from "@/graphql/scalar";
 import { userService } from "./service";
 
 // ** import utils
-import { checkAuth } from "@/utils/clerk-auth";
+// import { checkAuth } from "@/utils/clerk-auth";
 
 // ** import types
-import { Context } from "@/type/common";
-
+import { Context } from "@/types/common";
 
 interface UserByIdArgs {
   id: number;
@@ -35,28 +34,37 @@ export const userResolvers = {
   Query: {
     users: async (
       _: unknown,
-      { offset = 0, limit = 10, search = "" }: { offset: number; limit: number; search?: string },
-      { db }: { db: NodePgDatabase }
-    ) => userService.getUsers(db, offset, limit, search),
-    
-    user: async (_: unknown, { id }: UserByIdArgs, { db, auth }: Context) => {
-      checkAuth(auth); // Check if the user is authenticated
+      {
+        offset = 0,
+        limit = 10,
+        search = "",
+      }: { offset: number; limit: number; search?: string },
+      { db }: { db: NodePgDatabase },
+    ) => {
+      console.log({ offset, limit, search });
+
+      return userService.getUsers(db, offset, limit, search);
+    },
+
+    user: async (_: unknown, { id }: UserByIdArgs, { db }: Context) => {
       return userService.getUserById(db, id);
     },
   },
   Mutation: {
-    addUser: async (_: unknown, { input }: AddUserArgs, { db, auth }: Context) => {
-      checkAuth(auth); // Check if the user is authenticated
+    addUser: async (_: unknown, { input }: AddUserArgs, { db }: Context) => {
       return userService.addUser(db, input);
     },
 
-    updateUser: async (_: unknown, { id, input }: UpdateUserArgs, { db, auth }: Context) => {
-      checkAuth(auth); // Check if the user is authenticated
+    updateUser: async (
+      _: unknown,
+      { id, input }: UpdateUserArgs,
+      { db }: Context,
+    ) => {
       return userService.updateUser(db, id, input);
     },
 
-    deleteUser: async (_: unknown, { id }: DeleteUserArgs, { db, auth }: Context) => {
-      checkAuth(auth); // Check if the user is authenticated
+    deleteUser: async (_: unknown, { id }: DeleteUserArgs, { db }: Context) => {
+      // checkAuth(auth); // Check if the user is authenticated
       return userService.deleteUser(db, id);
     },
   },

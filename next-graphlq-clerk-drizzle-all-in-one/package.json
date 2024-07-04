@@ -12,6 +12,7 @@
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.8",
     "@apollo/server": "^4.10.4",
     "@as-integrations/next": "^3.0.0",
     "@clerk/nextjs": "^5.1.6",
