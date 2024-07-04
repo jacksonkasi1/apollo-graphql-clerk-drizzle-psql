@@ -13,7 +13,7 @@ const pool = new Pool({
   connectionString: env.DATABASE_URL,
   ssl: {
     // Please re-download this certificate at least monthly to avoid expiry
-    ca: fs.readFileSync("./ca.crt").toString(),
+    ca: env.DATABASE_CERT,
   },
 });
 
