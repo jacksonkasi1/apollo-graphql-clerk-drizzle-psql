@@ -1,7 +1,6 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 
 import { Pool } from "pg";
-import fs from "fs";
 
 // ** import config
 import { env } from "@/config";
@@ -16,6 +15,9 @@ const pool = new Pool({
     ca: env.DATABASE_CERT,
   },
 });
+
+console.log(env.DATABASE_CERT);
+
 
 export const db = drizzle(pool, {
   logger: false,
