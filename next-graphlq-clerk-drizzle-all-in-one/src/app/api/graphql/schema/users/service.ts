@@ -26,6 +26,7 @@ export const userService = {
     const whereCondition =
       conditions.length > 0 ? and(...conditions) : undefined;
 
+      // @ts-ignore
     const userData = await db.query.tbl_users.findMany({
       where: whereCondition,
       orderBy: asc(tbl_users.id),
@@ -83,6 +84,7 @@ export const userService = {
     return result[0];
   },
   deleteUser: async (db: NodePgDatabase, id: number) => {
+    // @ts-ignore
     const isUserExist = await db.query.tbl_users.findFirst({
       where: eq(tbl_users.id, id),
     });
