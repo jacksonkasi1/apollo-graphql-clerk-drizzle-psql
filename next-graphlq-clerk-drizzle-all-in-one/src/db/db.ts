@@ -16,8 +16,6 @@ const pool = new Pool({
   },
 });
 
-console.log(env.DATABASE_CERT);
-
 
 export const db = drizzle(pool, {
   logger: false,
